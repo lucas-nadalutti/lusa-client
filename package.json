@@ -18,9 +18,12 @@
   },
   "homepage": "https://github.com/lucas-nadalutti/lusa-client#readme",
   "dependencies": {
+    "angular-resource": "^1.6.0",
     "angular-ui-router": "^0.3.2",
     "angularjs": "0.0.1",
     "connect": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.0.0",
     "serve-static": "^1.11.1"
   }
 }

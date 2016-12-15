@@ -1,15 +1,25 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
+
+		<link rel="stylesheet" type="text/css" href="assets/css/main.css" />
+
 		<script src="node_modules/angular/angular.js"></script>
 		<script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+		<script src="node_modules/angular-resource/angular-resource.min.js"></script>
 
 		<script src="app/main.js"></script>
+		<script src="app/controllers/products.js"></script>
+		<script src="app/services/products.js"></script>
 	</head>
 
 	<body ng-app="Main">
 		<div ng-controller="MainController">
-			
+			<li><a ui-sref="products_list">Produtos</a></li>
+			<li><a ui-sref="products_create">Criar Produto</a></li>
+			<div>
+				<ui-view></ui-view>
+			</div>
 		</div>
 	</body>
 </html>
