@@ -1,0 +1,98 @@
+<div id="product-data">
+	<p><img ng-src="{{product.imageUrl}}" /></p>
+	<p><strong>{{product.name}}</strong></p>
+	<p>{{product.description}}</p>
+	<p>{{product.fullPrice | currency}}</p>
+</div>
+
+<hr>
+
+<form name="checkoutForm" ng-submit="createCheckout(checkout, checkoutForm.$valid)" novalidate>
+
+	<div class="form-group">
+		<label for="name">Nome:</label>
+		<input name="name" type="text" ng-model="checkout.name" required />
+		<div class="form-error" ng-show="checkoutForm.$submitted || checkoutForm.name.$touched">
+	    	<div ng-show="checkoutForm.name.$error.required">Nome é obrigatório</div>
+	    </div>
+    </div>
+
+	<div class="form-group">
+		<label for="email">E-mail:</label>
+		<input name="email" type="email" ng-model="checkout.email" required />
+		<div class="form-error" ng-show="checkoutForm.$submitted || checkoutForm.email.$touched">
+	    	<div ng-show="checkoutForm.email.$error.required">E-mail é obrigatório</div>
+	    	<div ng-show="checkoutForm.email.$error.email">Não é um e-mail válido</div>
+	    </div>
+    </div>
+
+	<div class="form-group">
+		<label for="address">Endereço:</label>
+		<input name="address" type="text" ng-model="checkout.address" required />
+		<div class="form-error" ng-show="checkoutForm.$submitted || checkoutForm.address.$touched">
+	    	<div ng-show="checkoutForm.address.$error.required">Endereço é obrigatório</div>
+	    </div>
+    </div>
+
+	<div class="form-group">
+		<label for="deliveryMethod">Forma de entrega:</label>
+		<input name="deliveryMethod" type="radio" ng-model="checkout.deliveryMethod" value="SEDEX" required /> Sedex
+		<input name="deliveryMethod" type="radio" ng-model="checkout.deliveryMethod" value="PAC" required /> PAC
+		<div class="form-error" ng-show="checkoutForm.$submitted || checkoutForm.deliveryMethod.$touched">
+	    	<div ng-show="checkoutForm.deliveryMethod.$error.required">Selecione uma forma de entrega</div>
+	    </div>
+    </div>
+
+	<div class="form-group">
+		<label for="paymentMethod">Forma de pagamento:</label>
+		<input name="paymentMethod" type="radio" ng-model="checkout.paymentMethod" value="INVOICE" required /> Boleto Bancário
+		<input name="paymentMethod" type="radio" ng-model="checkout.paymentMethod" value="CREDIT_CARD" required /> Cartão de Crédito
+		<div class="form-error" ng-show="checkoutForm.$submitted || checkoutForm.paymentMethod.$touched">
+	    	<div ng-show="checkoutForm.paymentMethod.$error.required">Selecione uma forma de pagamento</div>
+	    </div>
+    </div>
+
+    <div ng-show="checkout.paymentMethod == 'CREDIT_CARD'">
+		<div class="form-group">
+			<label for="cardFlag">Bandeira:</label>
+			<input name="cardFlag" type="radio" ng-model="checkout.paymentData.flag" value="VISA" required /> Visa
+			<input name="cardFlag" type="radio" ng-model="checkout.paymentData.flag" value="MASTERCARD" required /> MasterCard
+			<div class="form-error" ng-show="checkoutForm.$submitted || checkoutForm.cardFlag.$touched">
+		    	<div ng-show="checkoutForm.cardFlag.$error.required">Bandeira é obrigatório</div>
+		    </div>
+	    </div>
+		<div class="form-group">
+			<label for="cardNumber">Número:</label>
+			<input name="cardNumber" type="text" ng-model="checkout.paymentData.number" ng-required="checkout.paymentMethod == 'CREDIT_CARD'" />
+			<div class="form-error" ng-show="checkoutForm.$submitted || checkoutForm.cardNumber.$touched">
+		    	<div ng-show="checkoutForm.cardNumber.$error.required">Número é obrigatório</div>
+		    </div>
+	    </div>
+		<div class="form-group">
+			<label for="cardName">Nome:</label>
+			<input name="cardName" type="text" ng-model="checkout.paymentData.name" ng-required="checkout.paymentMethod == 'CREDIT_CARD'" />
+			<div class="form-error" ng-show="checkoutForm.$submitted || checkoutForm.cardName.$touched">
+		    	<div ng-show="checkoutForm.cardName.$error.required">Nome é obrigatório</div>
+		    </div>
+	    </div>
+		<div class="form-group">
+			<label for="cardDueDate">Data de vencimento:</label>
+			<input name="cardDueDate" type="text" ng-model="checkout.paymentData.dueDate" ng-required="checkout.paymentMethod == 'CREDIT_CARD'" />
+			<div class="form-error" ng-show="checkoutForm.$submitted || checkoutForm.cardDueDate.$touched">
+		    	<div ng-show="checkoutForm.cardDueDate.$error.required">Data de vencimento é obrigatório</div>
+		    </div>
+	    </div>
+		<div class="form-group">
+			<label for="cardSecurityCode">CVV:</label>
+			<input name="cardSecurityCode" type="text" ng-model="checkout.paymentData.securityCode" ng-required="checkout.paymentMethod == 'CREDIT_CARD'" />
+			<div class="form-error" ng-show="checkoutForm.$submitted || checkoutForm.cardSecurityCode.$touched">
+		    	<div ng-show="checkoutForm.cardSecurityCode.$error.required">CVV é obrigatório</div>
+		    </div>
+	    </div>
+    </div>
+
+	<div class="form-group">
+		<input type="submit" class="btn btn-success" value="Finalizar Compra" />
+	</div>
+
+</form>

@@ -1,2 +1,62 @@
-body {
-  background: #eeeeee; }
+a {
+  cursor: pointer; }
+
+th, td {
+  padding-bottom: 0.8em;
+  text-align: center; }
+
+input, textarea {
+  padding: 0.3em;
+  border-radius: 5px;
+  outline: none; }
+
+textarea {
+  box-shadow: inset 1px 1px; }
+
+table {
+  width: 80%;
+  margin: 0 auto;
+  border-collapse: collapse; }
+  table td, table th {
+    border: 1px solid #4CAF50;
+    padding: 0.5em;
+    text-align: center; }
+  table#checkout-data td:first-child {
+    font-weight: bold; }
+
+#header {
+  width: 100%;
+  margin-bottom: 1em;
+  background-color: #4CAF50; }
+  #header .menu-item {
+    display: inline-block; }
+    #header .menu-item a {
+      width: 100%;
+      padding: 0.5em 1em;
+      display: block;
+      color: white;
+      text-decoration: none;
+      transition: 0.2s; }
+      #header .menu-item a:hover {
+        background-color: white;
+        color: #4CAF50; }
+  #header #menu {
+    margin: 0;
+    padding: 0;
+    width: 80%;
+    display: inline-block; }
+  #header #logo {
+    width: 18%;
+    text-align: right;
+    display: inline-block;
+    font-weight: bold; }
+    #header #logo a {
+      color: white;
+      text-decoration: none; }
+
+.loading-icon {
+  width: 1em; }
+
+.form-error {
+  color: red;
+  font-weight: bold; }

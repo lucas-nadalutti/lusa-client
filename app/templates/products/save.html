@@ -1,0 +1,63 @@
+<form name="productsForm" ng-submit="saveProduct(product, productsForm)" novalidate>
+
+	<div class="form-group">
+		<label for="name">Nome:</label>
+		<input name="name" type="text" ng-model="product.name" required />
+		<div class="form-error" ng-show="productsForm.$submitted || productsForm.name.$touched">
+	    	<div ng-show="productsForm.name.$error.required">Nome é obrigatório</div>
+	    </div>
+    </div>
+
+    <div class="form-group">
+	    <label for="description">Descrição:</label>
+		<textarea name="description" ng-model="product.description" required ></textarea>
+		<div class="form-error" ng-show="productsForm.$submitted || productsForm.description.$touched">
+	    	<div ng-show="productsForm.description.$error.required">Descrição é obrigatório</div>
+	    </div>
+	</div>
+
+    <div class="form-group">
+	    <label for="quantity">Quantidade:</label>
+		<input name="quantity" type="number" ng-model="product.quantity" required min="0" />
+		<div class="form-error" ng-show="productsForm.$submitted || productsForm.quantity.$touched">
+	    	<div ng-show="productsForm.quantity.$error.required">Quantidade é obrigatório</div>
+	    	<div ng-show="productsForm.quantity.$error.min">Quantidade não pode ser negativo</div>
+	    </div>
+	</div>
+
+    <div class="form-group">
+	    <label for="fullPrice">Preço:</label>
+		<input name="fullPrice" type="number" ng-model="product.fullPrice" required min="0" />
+		<div class="form-error" ng-show="productsForm.$submitted || productsForm.fullPrice.$touched">
+	    	<div ng-show="productsForm.fullPrice.$error.required">Preço é obrigatório</div>
+	    	<div ng-show="productsForm.fullPrice.$error.min">Preço não pode ser negativo</div>
+	    </div>
+	</div>
+	
+    <div class="form-group">
+		<label for="currentPrice">Preço com desconto:</label>
+		<input name="currentPrice" type="number" ng-model="product.currentPrice" min="0" />
+		</label>
+		<div class="form-error" ng-show="productsForm.$submitted || productsForm.currentPrice.$touched">
+	    	<div ng-show="productsForm.currentPrice.$error.min">Preço com desconto não pode ser negativo</div>
+	    </div>
+	</div>
+	
+	<div class="form-group">
+		<label for="status">Status:</label>
+		<select name="status" ng-model="product.status" ng-options="status.value as status.label for status in statusOptions"></select>
+	</div>
+
+	<div class="form-group">
+		<label for="image">Imagem:</label>
+		<input name="image" type="text" ng-model="product.imageUrl" required />
+		<div class="form-error" ng-show="productsForm.$submitted || productsForm.image.$touched">
+	    	<div ng-show="productsForm.image.$error.required">Imagem é obrigatório</div>
+	    </div>
+	</div>
+
+	<div class="form-group">
+		<input type="submit" class="btn btn-success" value="Salvar" />
+	</div>
+
+</form>

@@ -1,0 +1,25 @@
+
+<table id="checkouts">
+	<tr>
+		<th>Nome</th>
+		<th>E-mail</th>
+		<th>Endereço</th>
+		<th>Produto</th>
+		<th>Forma de Entrega</th>
+		<th>Forma de Pagamento</th>
+		<th>Ver Detalhes</th>
+	</tr>
+	<tr ng-repeat="checkout in checkouts">
+		<td>{{checkout.name}}</td>
+		<td>{{checkout.email}}</td>
+		<td>{{checkout.address}}</td>
+		<td>{{checkout.product.name}}</td>
+		<td>{{checkout.deliveryMethod}}</td>
+		<td>{{paymentMethodLabels[checkout.paymentMethod]}}</td>
+		<td>
+			<a ui-sref="checkouts_show({id: checkout.id})" class="btn btn-info">
+				<i class="fa fa-eye" aria-hidden="true"></i>
+			</a>
+		</td>
+	</tr>
+</table>

@@ -1,24 +1,15 @@
-angular.module('Main', ['ui.router', 'ngResource'])
-	.constant('API_ENDPOINT', 'http://localhost:8080')
-	.config(function($stateProvider, $urlRouterProvider) {
-		$stateProvider.state('products_list', {
-			url: '/products',
-			templateUrl: 'app/templates/products_list.html',
-			controller: 'ProductsListController'
-		})
-		$stateProvider.state('products_create', {
-			url: '/products/new',
-			templateUrl: 'app/templates/products_save.html',
-			controller: 'ProductsSaveController'
-		})
-		$stateProvider.state('products_edit', {
-			url: '/products/:id',
-			templateUrl: 'app/templates/products_save.html',
-			controller: 'ProductsSaveController'
-		})
-
-		$urlRouterProvider.otherwise('products_list')
-	})
-	.controller('MainController', function($scope) {
-
+angular.module('Main', [
+	'tmh.dynamicLocale',
+	'Products', 'Checkouts'
+])
+    .value('availableLocales', {
+        'en-us': 'English',
+        'pt-br': 'Portuguese'
+    })
+    .config(function(tmhDynamicLocaleProvider) {
+        tmhDynamicLocaleProvider
+            .localeLocationPattern('node_modules/angular-i18n/angular-locale_{{locale}}.js');
+    })
+	.run(function(tmhDynamicLocale) {
+		tmhDynamicLocale.set('pt-br')
 	})

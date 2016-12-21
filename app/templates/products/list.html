@@ -1,0 +1,40 @@
+
+<table id="products">
+	<tr>
+		<th>Nome</th>
+		<th>Preço</th>
+		<th>Preço c/ desc.</th>
+		<th>Quantidade</th>
+		<th>Status</th>
+		<th>Editar</th>
+		<th>Apagar</th>
+	</tr>
+	<tr ng-repeat="product in products">
+		<td>
+			{{product.name}}
+			<a class="product-description" data-toggle="tooltip" title="{{product.description}}">[?]</a>
+		</td>
+		<td>{{product.fullPrice | currency}}</td>
+		<td>{{product.currentPrice | currency}}</td>
+		<td>{{product.quantity}}</td>
+		<td>
+			<i class="fa fa-check" ng-show="product.status == 'ACTIVE'"></i>
+			<i class="fa fa-times" ng-show="product.status == 'INACTIVE'"></i>
+		</td>
+		<td>
+			<a ui-sref="products_edit({id: product.id})" class="btn btn-warning">
+				<i class="fa fa-pencil-square-o"></i>
+			</a>
+		</td>
+		<td>
+			<a ng-click="delete(product)" class="btn btn-danger">
+				<span ng-hide="product._loading">
+					<i class="fa fa-times"></i>
+				</span>
+				<span ng-show="product._loading">
+					<img class="loading-icon" src="assets/img/loading.gif" />
+				</span>
+			</a>
+		</td>
+	</tr>
+</table>

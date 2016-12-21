@@ -2,22 +2,62 @@
 	<head>
 		<meta charset="utf-8" />
 
+		<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.min.css" />
 		<link rel="stylesheet" type="text/css" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/store.css" />
 
 		<script src="node_modules/angular/angular.js"></script>
 		<script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
 		<script src="node_modules/angular-resource/angular-resource.min.js"></script>
+		<script src="node_modules/angular-dynamic-locale/dist/tmhDynamicLocale.min.js"></script>
+		<script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+		<script src="node_modules/lodash/lodash.min.js"></script>
 
 		<script src="app/main.js"></script>
+		<script src="app/commons.js"></script>
+		<script src="app/controllers/checkouts.js"></script>
 		<script src="app/controllers/products.js"></script>
+		<script src="app/routes/checkouts.js"></script>
+		<script src="app/routes/products.js"></script>
+		<script src="app/services/checkouts.js"></script>
 		<script src="app/services/products.js"></script>
 	</head>
 
 	<body ng-app="Main">
+		<div id="header">
+			<ul id="menu">
+				<li class="menu-item">
+					<a ui-sref="store">
+						<i class="fa fa-shopping-cart"></i> Loja
+					</a>
+				</li>
+				<li class="menu-item">
+					<a ui-sref="products_list">
+						<i class="fa fa-cogs"></i> Produtos
+					</a>
+				</li>
+				<li class="menu-item">
+					<a ui-sref="products_create">
+						<i class="fa fa-plus"></i> Criar Produto
+					</a>
+				</li>
+				<li class="menu-item">
+					<a ui-sref="checkouts_list">
+						<i class="fa fa-list"></i> Pedidos
+					</a>
+				</li>
+			</ul>
+			<div id="logo">
+				<a ui-sref="store">LuSA</a>
+			</div>
+		</div>
 		<div ng-controller="MainController">
-			<li><a ui-sref="products_list">Produtos</a></li>
-			<li><a ui-sref="products_create">Criar Produto</a></li>
-			<div>
+			<div class="col-md-12">
+				<div ng-show="flashMessage" class="alert" ng-class="flashMessage.type">
+					{{flashMessage.text}}
+				</div>
+
 				<ui-view></ui-view>
 			</div>
 		</div>

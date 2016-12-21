@@ -1,0 +1,12 @@
+.product {
+  margin-bottom: 3em;
+  text-align: center; }
+
+#product-data img {
+  width: 10em; }
+
+.price {
+  font-weight: bold; }
+  .price.risked {
+    color: red;
+    text-decoration: line-through; }
