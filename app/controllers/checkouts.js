@@ -21,12 +21,13 @@ angular.module('Checkouts', [
 			paymentData: {}
 		}
 
-		$scope.createCheckout = function(checkout, isValid) {
-			if (!isValid) {
+		$scope.createCheckout = function(checkout, form) {
+			if (!form.$valid) {
 				$scope.showError('Um erro ocorreu ao processar seu pedido')
 				return
 			}
 
+			$scope.loading = true
 			CheckoutService.create(checkout).then(
 				function(response) {
 					_.extend(checkout, response)
@@ -35,7 +36,9 @@ angular.module('Checkouts', [
 				function() {
 					$scope.showError('Ocorreu um erro ao processar seu pedido')
 				}
-			)
+			).finally(function() {
+				$scope.loading = false
+			})
 		}
 	})
 	.controller('CheckoutsListController', function($scope, CheckoutService, PAYMENT_METHOD_LABELS) {

@@ -7,7 +7,7 @@
 
 <hr>
 
-<form name="checkoutForm" ng-submit="createCheckout(checkout, checkoutForm.$valid)" novalidate>
+<form name="checkoutForm" ng-submit="createCheckout(checkout, checkoutForm)" novalidate>
 
 	<div class="form-group">
 		<label for="name">Nome:</label>
@@ -45,8 +45,8 @@
 
 	<div class="form-group">
 		<label for="paymentMethod">Forma de pagamento:</label>
-		<input name="paymentMethod" type="radio" ng-model="checkout.paymentMethod" value="INVOICE" required /> Boleto Bancário
-		<input name="paymentMethod" type="radio" ng-model="checkout.paymentMethod" value="CREDIT_CARD" required /> Cartão de Crédito
+		<input name="paymentMethod" type="radio" ng-model="checkout.paymentMethod" value="INVOICE" ng-required="checkout.paymentMethod == 'CREDIT_CARD'" /> Boleto Bancário
+		<input name="paymentMethod" type="radio" ng-model="checkout.paymentMethod" value="CREDIT_CARD" ng-required="checkout.paymentMethod == 'CREDIT_CARD'" /> Cartão de Crédito
 		<div class="form-error" ng-show="checkoutForm.$submitted || checkoutForm.paymentMethod.$touched">
 	    	<div ng-show="checkoutForm.paymentMethod.$error.required">Selecione uma forma de pagamento</div>
 	    </div>
@@ -55,8 +55,8 @@
     <div ng-show="checkout.paymentMethod == 'CREDIT_CARD'">
 		<div class="form-group">
 			<label for="cardFlag">Bandeira:</label>
-			<input name="cardFlag" type="radio" ng-model="checkout.paymentData.flag" value="VISA" required /> Visa
-			<input name="cardFlag" type="radio" ng-model="checkout.paymentData.flag" value="MASTERCARD" required /> MasterCard
+			<input name="cardFlag" type="radio" ng-model="checkout.paymentData.flag" value="VISA" ng-required="checkout.paymentMethod == 'CREDIT_CARD'" /> Visa
+			<input name="cardFlag" type="radio" ng-model="checkout.paymentData.flag" value="MASTERCARD" ng-required="checkout.paymentMethod == 'CREDIT_CARD'" /> MasterCard
 			<div class="form-error" ng-show="checkoutForm.$submitted || checkoutForm.cardFlag.$touched">
 		    	<div ng-show="checkoutForm.cardFlag.$error.required">Bandeira é obrigatório</div>
 		    </div>
@@ -92,7 +92,12 @@
     </div>
 
 	<div class="form-group">
-		<input type="submit" class="btn btn-success" value="Finalizar Compra" />
+		<button type="submit" class="btn btn-success">
+			Finalizar Compra
+			<span ng-show="loading">
+				<img class="loading-icon" src="assets/img/loading.gif" />
+			</span>
+		</button>
 	</div>
 
 </form>
