@@ -42,7 +42,7 @@ O sistema, portanto, terá gerado um novo pedido para o cliente seguindo as info
 * AngularJS como framework
 * KarmaJS e Jasmine para testes
 * NPM para gerenciamento de dependências
-* Outros (ver package.json)
+* Outras (`ver package.json`)
 
 
 ### Arquitetura
