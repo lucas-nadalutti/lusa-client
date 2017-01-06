@@ -1,0 +1,28 @@
+<form name="authForm" ng-submit="login(username, password, authForm)" novalidate>
+
+	<div class="form-group">
+		<label for="username">Login:</label>
+		<input name="username" type="text" ng-model="username" required />
+		<div class="form-error" ng-show="authForm.$submitted || authForm.username.$touched">
+	    	<div ng-show="authForm.username.$error.required">Usuário é obrigatório</div>
+	    </div>
+    </div>
+
+	<div class="form-group">
+		<label for="password">Senha:</label>
+		<input name="password" type="password" ng-model="password" required />
+		<div class="form-error" ng-show="authForm.$submitted || authForm.password.$touched">
+	    	<div ng-show="authForm.password.$error.required">Senha é obrigatório</div>
+	    </div>
+    </div>
+
+	<div class="form-group">
+		<button type="submit" class="btn btn-info">
+			Login
+			<span ng-show="loading">
+				<img class="loading-icon" src="assets/img/loading.gif" />
+			</span>
+		</button>
+	</div>
+
+</form>

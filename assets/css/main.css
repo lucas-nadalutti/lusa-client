@@ -10,6 +10,9 @@ input, textarea {
   border-radius: 5px;
   outline: none; }
 
+label {
+  display: block; }
+
 textarea {
   box-shadow: inset 1px 1px; }
 

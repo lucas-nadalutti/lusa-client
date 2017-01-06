@@ -15,6 +15,10 @@ input, textarea {
 	outline: none;
 }
 
+label {
+	display: block;
+}
+
 textarea {
 	box-shadow: inset 1px 1px;
 }

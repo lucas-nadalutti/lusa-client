@@ -1,6 +1,6 @@
 angular.module('Commons', [])
 	.constant('API_ENDPOINT', 'http://localhost:8080')
-	.run(function($rootScope) {
+	.run(function($rootScope, $state) {
 		$rootScope.flashMessage = {}
 		var showFlashMessage = function(type, message) {
 			$rootScope.flashMessage = {
@@ -19,5 +19,11 @@ angular.module('Commons', [])
 
 		$rootScope.$on('$stateChangeSuccess', function() {
 			$rootScope.flashMessage = {}
+		})
+
+		$rootScope.$on('unauthorizedRequest', function() {
+			$state.go('login').then(function() {
+				$rootScope.showError('Sua sessão expirou. Por favor, faça login novamente')				
+			})
 		})
 	})
