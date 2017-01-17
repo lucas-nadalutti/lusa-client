@@ -1,5 +1,6 @@
 angular.module('Commons', [])
-	.constant('API_ENDPOINT', 'http://localhost:8080')
+	// .constant('API_ENDPOINT', 'http://localhost:8080')
+	.constant('API_ENDPOINT', 'https://localhost:8443')
 	.run(function($rootScope, $state) {
 		$rootScope.flashMessage = {}
 		var showFlashMessage = function(type, message) {

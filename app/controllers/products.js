@@ -10,7 +10,6 @@ angular.module('Products', [
 
 	})
 	.controller('ProductsListController', function($scope, ProductsService) {
-
 		ProductsService.query().then(function(response) {
 			$scope.products = response
 		})

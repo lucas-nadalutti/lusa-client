@@ -1,6 +1,6 @@
 <form name="authForm" ng-submit="login(username, password, authForm)" novalidate>
 
-	<div class="form-group">
+	<!-- <div class="form-group">
 		<label for="username">Login:</label>
 		<input name="username" type="text" ng-model="username" required />
 		<div class="form-error" ng-show="authForm.$submitted || authForm.username.$touched">
@@ -23,6 +23,8 @@
 				<img class="loading-icon" src="assets/img/loading.gif" />
 			</span>
 		</button>
-	</div>
+	</div> -->
+
+	<a href="https://localhost:8443/auth/login?redirectUri=http://localhost:8000/cas_callback.html">Login</a>
 
 </form>

@@ -1,0 +1,33 @@
+<html>
+	
+	<head>
+		<script>
+			var getUrlParam = function(name) {
+			    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+			    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+			    var results = regex.exec(location.search);
+			    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+			};
+
+			var accessToken = getUrlParam('access_token');
+
+			if (!accessToken) {
+				localStorage.setItem('ngStorage-token', null);
+			}
+			else {
+				localStorage.setItem('ngStorage-token', JSON.stringify({
+					token_type: getUrlParam('token_type'),
+					access_token: accessToken,
+					refresh_token: getUrlParam('refresh_token'),
+					expires_in: getUrlParam('expires_in')
+				}));
+			}
+			
+			location.replace('/')
+
+		</script>
+	</head>
+
+	<body></body>
+
+</html>
